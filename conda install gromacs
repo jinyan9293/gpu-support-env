@@ -1,0 +1,39 @@
+# <center>install gromacs environment with conda</center>
+
+## 1. create conda env of gromacs
+
+    conda create -n gromacs
+
+## 2. activate gromacs env
+
+    conda activate gromacs
+
+## 3. install gromacs with conda
+
+    conda install gromacs=2023.4=nompi_cuda_h6303bc7_1
+
+## 4. test the gromacs command line
+
+    gmx
+
+    gmx pdb2gmx -h
+
+## 5. conda getting started
+
+check conda env installed
+
+    conda env list
+
+activate conda env
+
+    conda activate gromacs
+
+start your work
+
+    gmx
+    gmx pdb2gmx -h  
+    gmx help commands  
+
+inthe end deactivate conda env
+
+    conda deactivate

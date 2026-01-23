@@ -204,3 +204,14 @@
     2026-01-21 10:56:57.323952: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
     >>> import tensorflow
     >>>
+
+# *****安装更高版本的tensorflow-2.10.0 *****
+
+### 此处与网络搜到的版本对应关系（<https://blog.csdn.net/ly869915532/article/details/124542362>）有出入，以此为准：
+
+    conda create -n tensorflow python=3.9 condatoolkit=11.3 cudnn=8.2 -y
+    
+    pip install pybind11
+
+    conda install tensorflow=2.10.0=gpu_py39h039f4ff_0 -y
+

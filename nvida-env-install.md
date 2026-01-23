@@ -42,7 +42,7 @@
 
 ### 创建conda环境
 
-    conda create --name alphafold python==3.8
+    conda create --name alphafold python=3.8
 
 ### 以GPU服务器centos系统为例，先查看硬盘信息
 
@@ -50,11 +50,11 @@
 
 ### 1. 安装cuda (nvidia)
 
-    conda install cudatoolkit==11.2.2
+    conda install -c nvidia cudatoolkit=11.2.2
 
 ### 2. 安装cudnn (nvidia)
 
-    conda install cudnn=8.1
+    conda install -c nvidia cudnn=8.1
 
 ### 3. 安装jax、jaxlib
 
@@ -80,3 +80,44 @@
 
 >安装完毕可执行以下命令测试：
     python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+
+>如果报错如下：
+
+    >>> import tensorflow
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/__init__.py", line 41, in <module>
+            from tensorflow.python.tools import module_util as _module_util
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/python/__init__.py", line 40, in <module>
+            from tensorflow.python.eager import context
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/python/eager/context.py", line 32, in <module>
+            from tensorflow.core.framework import function_pb2
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/core/framework/function_pb2.py", line 16, in <module>
+            from tensorflow.core.framework import attr_value_pb2 as tensorflow_dot_core_dot_framework_dot_attr__value__pb2
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/core/framework/attr_value_pb2.py", line 16, in <module>
+            from tensorflow.core.framework import tensor_pb2 as tensorflow_dot_core_dot_framework_dot_tensor__pb2
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/core/framework/tensor_pb2.py", line 16, in <module>
+            from tensorflow.core.framework import resource_handle_pb2 as tensorflow_dot_core_dot_framework_dot_resource__handle__pb2
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/core/framework/resource_handle_pb2.py", line 16, in <module>
+            from tensorflow.core.framework import tensor_shape_pb2 as tensorflow_dot_core_dot_framework_dot_tensor__shape__pb2
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/tensorflow/core/framework/tensor_shape_pb2.py", line 36, in <module>
+            _descriptor.FieldDescriptor(
+        File "/home/shuchang.wu/miniconda3/envs/DeepFRI/lib/python3.8/site-packages/google/protobuf/descriptor.py", line 621, in __new__
+            _message.Message._CheckCalledFromGeneratedFile()
+    TypeError: Descriptors cannot be created directly.
+    If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc >= 3.19.0.
+    If you cannot immediately regenerate your protos, some other possible workarounds are:
+      1. Downgrade the protobuf package to 3.20.x or lower.
+      2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).
+
+    More information: https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates
+    >>> 
+
+>尝试
+
+    pip install --upgrade protobuf==3.20
+
+>再执行
+
+    python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+    

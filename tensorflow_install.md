@@ -215,3 +215,5 @@
 
     conda install tensorflow=2.10.0=gpu_py39h039f4ff_0 -y
 
+### 注意：使用pip安装tensorflow 如果提示动态库找不到，是因为编译时用的Python环境是通过miniconda构建的虚拟环境，所以 Python 3.9 可能安装在了一个非标准的路径下，而这个路径没有被包含在动态链接器的搜索路径中，使用conda安装可以解决问题。
+

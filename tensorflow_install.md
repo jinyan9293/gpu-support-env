@@ -213,9 +213,9 @@
 
     conda activate tensorflow
 
-    conda install condatoolkit=11.3 cudnn=8.2 -y
+    conda install cudatoolkit=11.3 cudnn=8.2 -y
     
-    pip install pybind11 -y
+    pip install pybind11
 
     conda install tensorflow=2.10.0=gpu_py39h039f4ff_0 -y
 
